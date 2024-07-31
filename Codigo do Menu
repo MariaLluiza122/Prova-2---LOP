@@ -1,0 +1,114 @@
+var tela = 1;
+var y = 150;
+var i;
+var fundo;
+controle = false;
+
+function preload() {
+  fundo =  loadImage("https://assets.editor.p5js.org/661d505cf17a9d001a6fe102/d50d02bf-c474-4777-a228-f095eec7af4a.png"
+  );
+}
+
+function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+  //Tela do Menu
+  if (tela == 1) {
+    background(fundo, 10);
+    textSize(25);
+    textAlign(CENTER);
+
+    fill(0, 102, 153);
+    rect(140, y, 120, 30);
+
+    fill(255, 255, 255);
+    text("SpaceSong", 200, 100);
+    text("Iniciar", 200, 173);
+    text("Instruções", 200, 223);
+    text("Créditos", 200, 273);
+
+    if (keyIsPressed == false) {
+      controle = false;
+    }
+    if (controle == false) {
+      if (keyIsDown(UP_ARROW) && y <= 250 && y > 150) {
+        y -= 50;
+        controle = true;
+      }
+      if (keyIsDown(ENTER) && y == 150) {
+        tela = 2;
+        controle = true;
+      } else if (keyIsDown(ENTER) && y == 200) {
+        tela = 3;
+        controle = true;
+      } else if (keyIsDown(ENTER) && y == 250) {
+        tela = 4;
+        controle = true;
+      }
+
+      if (keyIsDown(DOWN_ARROW) && y < 250 && y >= 150) {
+        y += 50;
+        controle = true;
+      }
+      if (keyIsDown(ENTER) && y == 150) {
+        tela = 2;
+        controle = true;
+      } else if (keyIsDown(ENTER) && y == 200) {
+        tela = 3;
+        controle = true;
+      } else if (keyIsDown(ENTER) && y == 250) {
+        tela = 4;
+        controle = true;
+      }
+      if (keyIsDown(ENTER) && y < 250 && y >= 150) {
+        y += 50;
+        controle = true;
+      }
+    }
+  }
+  
+
+  //Tela do Jogo
+  else if (tela == 2) {
+    background(fundo);
+
+    fill(255, 255, 255);
+    text("Apertar tecla ESC para voltar", 200, 50);
+    fill('#000000');
+    rect(80, 190, 230, 40);
+    fill(255, 255, 255);
+    text("Inicio do Jogo", 200, 220);
+
+    if (keyIsDown(ESCAPE)) {
+      tela = 1;
+    }
+  }
+  
+  
+    // Tela das Instruções
+    else if (tela == 3) {
+      background(fundo);
+      textSize(25);
+  
+      fill(255,255,255);
+      text("EM DESENVOLVIMENTO...", 200, 190);
+      if (keyIsDown(ESCAPE)) {
+        tela = 1;
+      }
+    }
+  
+  
+      // Tela dos créditos
+      else if (tela == 4) {
+        background(fundo);
+
+        fill(255, 255, 255);
+        text("Apertar tecla ESC para voltar", 200, 50);
+
+        if (keyIsDown(ESCAPE)) {
+          tela = 1;
+        }
+      }
+}
